@@ -98,7 +98,7 @@ running the simulation with the original provided configuration would replicate 
 Follow instructions at  https://sofa-framework.github.io/doc/getting-started/build.
 
 2. **run the simulation**<br>
-   python main.py --config configs/default.yaml
+   python main.py --config Datageneration/config.yaml
 
 3. **Resumable excecution**<br>
    Each simulation automatically saves checkpoints under _checkpoints/.<br>
