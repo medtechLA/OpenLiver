@@ -1,0 +1,48 @@
+paths:
+  livers: "" # Path to tetrahedral meshes
+  surfaces: "" # Path to surface meshes
+  out: "" # Output path
+
+run:
+  frames: 50 # Number of frames per simulation
+  dt: 0.02 # Time step
+  simulations_per_liver: 10 # Number of simulations per liver mesh
+  resume: true # Whether to resume from last checkpoint
+  checkpoint_every: 10 # Save checkpoint every N simulations
+
+physics:
+  young_modulus_range: [2000, 5000] # Range of Young's modulus values
+  young_modulus_step: 200 # Step size for Young's modulus
+  poisson_ratio: 0.35 # Poisson's ratio
+  total_mass: 1.5 # Total mass of the liver
+  rayleigh_stiffness: 0.1 # Rayleigh damping stiffness coefficient
+  rayleigh_mass: 0.1 # Rayleigh damping mass coefficient
+
+forces:
+  cycle_length: 50 # Number of frames per force cycle
+  max_magnitude_range: [1.0, 5.0] # Range of maximum force magnitudes
+  regions: "six_parts" # Force application regions
+
+cameras:
+  radii: [0.5, 1.0] # Camera distances from the liver center
+  angles_deg: [60, 30, 0, -30, -60] # Camera elevation angles
+  y_offset: 0.25 # Vertical offset of cameras
+  sensors:
+    - name: HL
+      resolution: [320, 288]
+      K: [[176.07, 0, 163.51],[0, 182.16, 168.51],[0, 0, 1]]
+    - name: RS
+      resolution: [640, 480]
+      K: [[594.49, 0, 321.472],[0, 594.49, 244.669],[0, 0, 1]]
+
+noise:
+  mode: "ray_aligned"     # "z_only" or "off"
+  max_sigma_m: 0.005
+
+saving:
+  displacement_threshold_m: 0.05
+  tre_samples: 256
+
+seeds:
+  #base: 1234
+  per_liver_sim: true
